@@ -1,4 +1,4 @@
-   // Mobile menu toggle
+// Mobile menu toggle
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 
@@ -45,34 +45,11 @@ function updateHeaderBackground() {
 window.addEventListener('scroll', updateHeaderBackground);
 updateHeaderBackground(); // Initialize on load
 
-// Contact form submission
-const contactForm = document.getElementById('contact-form');
-const toast = document.getElementById('toast');
-const toastMessage = document.getElementById('toast-message');
-
-if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(contactForm);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const message = formData.get('message');
-    
-    // Here you would typically send the data to a server
-    // For demo purposes, we'll just show a success message
-    
-    // Reset form
-    contactForm.reset();
-    
-    // Show toast message
-    showToast('Thanks for reaching out. I\'ll get back to you soon!');
-  });
-}
-
 // Toast notification function
 function showToast(message) {
+  const toast = document.getElementById('toast');
+  const toastMessage = document.getElementById('toast-message');
+  
   if (toast && toastMessage) {
     toastMessage.textContent = message;
     toast.classList.add('visible');
