@@ -59,7 +59,44 @@ function showToast(message) {
       toast.classList.remove('visible');
     }, 5000);
   }
-}
+};
+
+// Get the contact form element
+const contactForm = document.getElementById('contact-form');
+
+// Add an event listener to the form submission
+contactForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Get the form data
+  const formData = new FormData(contactForm);
+  console.log(formData);
+  
+  // Send the form data to the server
+  fetch(contactForm.action, {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    // Show a toast notification
+    showToast('Message sent successfully!');
+    
+    // Show an alert message
+    alert('Your message has been sent successfully!');
+    
+    // Reset the form fields
+    contactForm.reset();
+  })
+  .catch(error => {
+    console.error(error);
+    showToast('Error sending message!');
+    alert('Error sending message!');
+  });
+});
 
 // Set current year in footer
 document.getElementById('current-year').textContent = new Date().getFullYear();
