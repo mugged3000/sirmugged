@@ -61,7 +61,7 @@ img, svg {
 
 /* Container */
 .container {
-  max-width: 1920px ;/* Increased from 1280px */
+  max-width: 1420px ;/* Increased from 1280px */
     padding: 0 1rem;
     margin: 0 auto;
 }

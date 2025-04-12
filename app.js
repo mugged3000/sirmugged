@@ -64,13 +64,12 @@ function showToast(message) {
 // Get the contact form element
 const contactForm = document.getElementById('contact-form');
 
-// Add an event listener to the form submission
-contactForm.addEventListener('submit', function(e) {
+// Function to handle form submission
+function handleSubmit(e) {
   e.preventDefault();
   
   // Get the form data
   const formData = new FormData(contactForm);
-  console.log(formData);
   
   // Send the form data to the server
   fetch(contactForm.action, {
@@ -80,13 +79,15 @@ contactForm.addEventListener('submit', function(e) {
       'Accept': 'application/json'
     }
   })
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
   .then(data => {
     // Show a toast notification
     showToast('Message sent successfully!');
-    
-    // Show an alert message
-    alert('Your message has been sent successfully!');
     
     // Reset the form fields
     contactForm.reset();
@@ -94,9 +95,11 @@ contactForm.addEventListener('submit', function(e) {
   .catch(error => {
     console.error(error);
     showToast('Error sending message!');
-    alert('Error sending message!');
   });
-});
+}
+
+// Add an event listener to the form submission
+contactForm.addEventListener('submit', handleSubmit);
 
 // Set current year in footer
 document.getElementById('current-year').textContent = new Date().getFullYear();
