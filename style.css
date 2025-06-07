@@ -61,15 +61,15 @@ img, svg {
 
 /* Container */
 .container {
-  max-width: 1420px ;/* Increased from 1280px */
+  max-width: 1420px ;
     padding: 0 1rem;
     margin: 0 auto;
 }
 
 @media (max-width: 768px) {
   .container {
-    max-width: 100%; /* Make it full-screen on mobile devices */
-    padding: 0 2rem; /* Adjust padding for mobile devices */
+    max-width: 100%; 
+    padding: 0 2rem; 
   }
 }
 @media (min-width: 640px) {
@@ -464,11 +464,30 @@ section {
 }
 
 /* Skills */
-.skills-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
+
+#skills .container {
+  text-align: center;
 }
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* .skills-grid .card {
+  max-width: 400px;
+  width: 100%;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+} */
+
+
+
+
 
 @media (min-width: 768px) {
   .skills-grid {
@@ -505,6 +524,26 @@ section {
 /* Experience */
 .experience {
   background-color: rgba(241, 245, 249, 0.5);
+}
+ /* view-project-btn */
+ .view-project-btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  background-color: #4CAF50;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+  margin-top: 1rem;
+}
+
+.view-project-btn:hover {
+  background-color: #3e8e41;
+  color: #fff;
+}
+
+.view-project-btn i {
+  margin-left: 0.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
